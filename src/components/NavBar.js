@@ -10,7 +10,7 @@ import { rotate } from '../assets/styles/animation';
 const Header = styled.header`
   display: flex;
   justify-content: space-between;
-  padding: 1.75rem 7.2143rem 0;
+  padding: 1.75rem 6.3125rem 0;
   align-items: flex-start;
   background: var(--white);
   box-shadow: var(--shadow-1);
@@ -74,7 +74,7 @@ class NavBar extends Component {
               style={({ isActive }) => ({
                 color: isActive && '#5ECE7B',
                 borderBottom: isActive && 'solid 2px var(--primary-color)',
-                fontWeight: isActive && '600'
+                fontWeight: isActive && '600',
               })}
             >
               {link.text}
