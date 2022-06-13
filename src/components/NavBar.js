@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { Component } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
@@ -5,9 +7,14 @@ import { NavLink } from 'react-router-dom';
 import Logo from '../assets/images/logo.svg';
 import Dollar from '../assets/images/dollar.svg';
 import Cart from '../assets/images/cart.svg';
+import Dropdown from './Dropdown';
 import { rotate } from '../assets/styles/animation';
 
 const Header = styled.header`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 50;
   display: flex;
   justify-content: space-between;
   padding: 1.75rem 6.3125rem 0;
@@ -39,6 +46,10 @@ const Header = styled.header`
       display: flex;
       align-items: center;
       gap: 2.375rem;
+
+      img {
+        cursor: pointer;
+      }
     }
   }
 `;
@@ -62,33 +73,50 @@ const links = [
 ];
 
 class NavBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showNavBar: false,
+    };
+  }
+
+  handleToggle = () => {
+    const { showNavBar } = this.state;
+    this.setState({ showNavBar: !showNavBar });
+  }
+
   render() {
+    const { showNavBar } = this.state;
+
     return (
-      <Header>
-        <nav>
-          {links.map((link) => (
-            <NavLink
-              key={link.id}
-              to={link.path}
-              className="links"
-              style={({ isActive }) => ({
-                color: isActive && '#5ECE7B',
-                borderBottom: isActive && 'solid 2px var(--primary-color)',
-                fontWeight: isActive && '600',
-              })}
-            >
-              {link.text}
-            </NavLink>
-          ))}
-        </nav>
-        <div>
-          <img src={Logo} alt="site logo" />
-        </div>
-        <div>
-          <img src={Dollar} alt="site logo" />
-          <img src={Cart} alt="site logo" />
-        </div>
-      </Header>
+      <div>
+        <Header>
+          <nav>
+            {links.map((link) => (
+              <NavLink
+                key={link.id}
+                to={link.path}
+                className="links"
+                style={({ isActive }) => ({
+                  color: isActive && '#5ECE7B',
+                  borderBottom: isActive && 'solid 2px var(--primary-color)',
+                  fontWeight: isActive && '600',
+                })}
+              >
+                {link.text}
+              </NavLink>
+            ))}
+          </nav>
+          <div>
+            <img src={Logo} alt="site logo" />
+          </div>
+          <div>
+            <img src={Dollar} alt="site logo" />
+            <img src={Cart} alt="site logo" onClick={this.handleToggle} />
+          </div>
+        </Header>
+        {showNavBar && <Dropdown />}
+      </div>
     );
   }
 }
