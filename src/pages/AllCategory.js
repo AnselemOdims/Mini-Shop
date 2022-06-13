@@ -10,7 +10,7 @@ const CategoryContainer = styled.section`
     font-weight: 400;
     font-size: 42px;
     line-height: 160%;
-    margin: 5rem 0 6.4375rem
+    margin: 10rem 0 6.4375rem;
    }
 `;
 

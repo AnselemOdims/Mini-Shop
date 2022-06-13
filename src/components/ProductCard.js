@@ -2,14 +2,38 @@ import { Component } from 'react';
 import styled from 'styled-components';
 
 import Image from '../assets/images/Image.png';
+import Cart from '../assets/images/cart2.svg';
 
 const StyledCard = styled.article`
  padding: 1rem;
  width: 100%;
  cursor: pointer;
+ position: relative;
 
  &:hover {
   box-shadow: 0px 10px 35px rgba(168, 172, 176, 0.19);
+
+  .cart-img {
+    display: flex;
+  }
+ }
+
+ .cart-img {
+    display: none;
+    position: absolute;
+    right: 1.9375rem;
+    bottom: 4.5rem;
+    background: var(--primary-color);
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 50%;
+    padding: 0.875rem;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+    }
  }
 
  > div {
@@ -45,6 +69,9 @@ class ProductCard extends Component {
           $
           <span>{50.00}</span>
         </p>
+        <div className="cart-img">
+          <img src={Cart} alt="cart" />
+        </div>
       </StyledCard>
     );
   }

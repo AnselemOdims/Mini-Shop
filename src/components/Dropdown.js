@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 
 import DropdownItem from './DropdownItem';
-import '../assets/styles/transition.css';
+import '../assets/styles/transition.scss';
 
 const Overlay = styled.div`
 

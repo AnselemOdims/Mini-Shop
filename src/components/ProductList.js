@@ -6,7 +6,7 @@ import ProductCard from './ProductCard';
 const StyledList = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem/6.4375rem;
+  gap: 6.4375rem 2.5rem;
   max-width: 1238px;
   width: 100%;
 
