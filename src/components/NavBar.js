@@ -115,7 +115,7 @@ class NavBar extends Component {
             <img src={Cart} alt="site logo" onClick={this.handleToggle} />
           </div>
         </Header>
-        {showNavBar && <Dropdown />}
+        <Dropdown show={showNavBar} />
       </div>
     );
   }

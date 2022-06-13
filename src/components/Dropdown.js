@@ -1,25 +1,32 @@
 import { Component } from 'react';
 import styled from 'styled-components';
+import { CSSTransition } from 'react-transition-group';
 
 import DropdownItem from './DropdownItem';
+import '../assets/styles/transition.css';
 
 const Overlay = styled.div`
-  position: fixed;
-  z-index: 10;
-  left: 0;
-  top: 80px;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4); 
 
-  > div {
+> div {
+  &:nth-of-type(1) {
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 80px;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4); 
+
+    }
+
+    &:nth-of-type(2) {
     width: 27%;
     position: absolute;
     left: 66%;
     height: 500px;
     background: var(--white);
-    z-index: -1;
+    z-index: 10;
     overflow: auto;
     display: flex;
     flex-direction: column;
@@ -75,31 +82,40 @@ const Overlay = styled.div`
       }
     }
   }
+  }
 `;
 
 class Dropdown extends Component {
   render() {
+    const { show } = this.props;
+
     return (
       <Overlay>
-        <div>
+        <CSSTransition in={show} timeout={500} classNames="drop" unmountOnExit>
+          <div />
+        </CSSTransition>
+        <CSSTransition in={show} timeout={500} classNames="drop-node" unmountOnExit>
           <div>
-            <span>My Bag, </span>
-            <span>3 items</span>
+            <div>
+              <span>My Bag, </span>
+              <span>3 items</span>
+            </div>
+            <ul>
+              <DropdownItem />
+              <DropdownItem />
+              <DropdownItem />
+            </ul>
+
+            <div>
+              <p>Total</p>
+              <p>$200.00</p>
+            </div>
+            <div>
+              <button type="button">VIEW BAG</button>
+              <button type="button">CHECKOUT</button>
+            </div>
           </div>
-          <ul>
-            <DropdownItem />
-            <DropdownItem />
-            <DropdownItem />
-          </ul>
-          <div>
-            <p>Total</p>
-            <p>$200.00</p>
-          </div>
-          <div>
-            <button type="button">VIEW BAG</button>
-            <button type="button">CHECKOUT</button>
-          </div>
-        </div>
+        </CSSTransition>
       </Overlay>
     );
   }
