@@ -8,7 +8,7 @@ import Logo from '../assets/images/logo.svg';
 import Dollar from '../assets/images/dollar.svg';
 import Cart from '../assets/images/cart.svg';
 import Dropdown from './Dropdown';
-import { rotate } from '../assets/styles/animation';
+import rotate from '../assets/styles/animation';
 
 const Header = styled.header`
   position: fixed;
@@ -62,12 +62,12 @@ const links = [
   },
   {
     id: 2,
-    path: '/tech',
+    path: '/products/1',
     text: 'TECH',
   },
   {
     id: 3,
-    path: '/clothes',
+    path: '/products/2',
     text: 'CLOTHES',
   },
 ];

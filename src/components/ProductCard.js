@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import Image from '../assets/images/Image.png';
 import Cart from '../assets/images/cart2.svg';
@@ -57,22 +58,26 @@ const StyledCard = styled.article`
  }
 
 `;
+
+const id = 2;
 class ProductCard extends Component {
   render() {
     return (
-      <StyledCard>
-        <div>
-          <img src={Image} alt="product" />
-        </div>
-        <h2>Apollo Running Short</h2>
-        <p>
-          $
-          <span>{50.00}</span>
-        </p>
-        <div className="cart-img">
-          <img src={Cart} alt="cart" />
-        </div>
-      </StyledCard>
+      <Link to={`/products/${id}`}>
+        <StyledCard>
+          <div>
+            <img src={Image} alt="product" />
+          </div>
+          <h2>Apollo Running Short</h2>
+          <p>
+            $
+            <span>{50.00}</span>
+          </p>
+          <div className="cart-img">
+            <img src={Cart} alt="cart" />
+          </div>
+        </StyledCard>
+      </Link>
     );
   }
 }

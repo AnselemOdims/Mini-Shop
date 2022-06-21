@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
+import PropTypes from 'prop-types';
 
 import DropdownItem from './DropdownItem';
 import '../assets/styles/transition.scss';
@@ -12,7 +13,7 @@ const Overlay = styled.div`
       position: fixed;
       z-index: 10;
       left: 0;
-      top: 80px;
+      top: 5rem;
       width: 100%;
       height: 100%;
       overflow: auto;
@@ -24,7 +25,7 @@ const Overlay = styled.div`
     width: 27%;
     position: absolute;
     left: 66%;
-    height: 500px;
+    height: 37.5rem;
     background: var(--white);
     z-index: 10;
     overflow: auto;
@@ -120,5 +121,9 @@ class Dropdown extends Component {
     );
   }
 }
+
+Dropdown.propTypes = {
+  show: PropTypes.bool.isRequired,
+};
 
 export default Dropdown;
