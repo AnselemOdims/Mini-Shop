@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { Component } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
@@ -115,7 +113,7 @@ class NavBar extends Component {
             <img src={Cart} alt="site logo" onClick={this.handleToggle} />
           </div>
         </Header>
-        <Dropdown show={showNavBar} />
+        <Dropdown show={showNavBar} handleToggle={this.handleToggle} />
       </div>
     );
   }

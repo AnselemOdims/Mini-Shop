@@ -21,7 +21,10 @@
 		"no-shadow": "off",
 		"react/prefer-stateless-function": "off",
 		"react/destructuring-assignment": "off",
-		"react/prop-types": "off"
+		"react/prop-types": "off",
+		"jsx-a11y/click-events-have-key-events": "off",
+		"jsx-a11y/no-noninteractive-element-interactions": "off",
+		"jsx-a11y/no-static-element-interactions": "off"
 	},
 	"ignorePatterns": ["dist/", "build/"]
 }

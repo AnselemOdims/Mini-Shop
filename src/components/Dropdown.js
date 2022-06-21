@@ -88,12 +88,12 @@ const Overlay = styled.div`
 
 class Dropdown extends Component {
   render() {
-    const { show } = this.props;
+    const { show, handleToggle } = this.props;
 
     return (
       <Overlay>
         <CSSTransition in={show} timeout={500} classNames="drop" unmountOnExit>
-          <div />
+          <div onClick={handleToggle} />
         </CSSTransition>
         <CSSTransition in={show} timeout={500} classNames="drop-node" unmountOnExit>
           <div>
@@ -124,6 +124,7 @@ class Dropdown extends Component {
 
 Dropdown.propTypes = {
   show: PropTypes.bool.isRequired,
+  handleToggle: PropTypes.func.isRequired,
 };
 
 export default Dropdown;
