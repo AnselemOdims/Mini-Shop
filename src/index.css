@@ -34,6 +34,7 @@ body {
   font-family: var(--font-1);
   position: relative;
   height: 100%;
+  color: var(--text-color-1);
 }
 
 ul li {

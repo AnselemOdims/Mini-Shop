@@ -1,7 +1,8 @@
 import { Component } from 'react';
 import styled from 'styled-components';
 
-import Image from '../assets/images/Image.png';
+import CartDetails1 from './CartDetails1';
+import CartDetails2 from './CartDetails2';
 
 const StyledItem = styled.li`
   display: flex;
@@ -123,33 +124,8 @@ class DropdownItem extends Component {
   render() {
     return (
       <StyledItem>
-        <div>
-          <h2>Apollo Running Short</h2>
-          <p>$50.00</p>
-          <p>Size: </p>
-          <div>
-            <button type="button">XS</button>
-            <button type="button">S</button>
-            <button type="button">M</button>
-            <button type="button">L</button>
-          </div>
-          <p>Color: </p>
-          <div>
-            <button type="button">X</button>
-            <button type="button">S</button>
-            <button type="button">M</button>
-          </div>
-        </div>
-        <div>
-          <div>
-            <button type="button">+</button>
-            <span>{1}</span>
-            <button type="button">-</button>
-          </div>
-          <div>
-            <img src={Image} alt="product" />
-          </div>
-        </div>
+        <CartDetails1 />
+        <CartDetails2 />
       </StyledItem>
     );
   }

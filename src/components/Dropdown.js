@@ -121,7 +121,6 @@ class Dropdown extends Component {
               <DropdownItem />
               <DropdownItem />
             </ul>
-
             <div>
               <p>Total</p>
               <p>$200.00</p>
