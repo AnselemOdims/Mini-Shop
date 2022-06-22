@@ -6,7 +6,7 @@ import CartData from '../components/CartData';
 const StyledCart = styled.section`
   padding: 9.5rem 6.95% 11.9375rem;
   
-  h2 {
+  h1 {
     font-weight: 700;
     font-size: 2rem;
     line-height: 2.5rem;
@@ -24,6 +24,24 @@ const StyledCart = styled.section`
       display: flex;
       flex-direction: column;
     }
+
+    &:nth-of-type(2) {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+
+      button {
+        margin-top: 0.5rem;
+        width: 17.4375rem;
+        height: 2.6875rem;
+        background: var(--primary-color);
+        color: var(--white);
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 120%;
+      }
+    }
   }
 `;
 
@@ -31,7 +49,7 @@ class Cart extends Component {
   render() {
     return (
       <StyledCart>
-        <h2>CART</h2>
+        <h1>CART</h1>
         <hr />
         <div>
           <CartData />

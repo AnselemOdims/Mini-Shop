@@ -4,7 +4,8 @@ class CartDetails1 extends Component {
   render() {
     return (
       <div>
-        <h2>Apollo Running Short</h2>
+        <h2>Apollo</h2>
+        <h3>Running Short</h3>
         <p>$50.00</p>
         <p>Size: </p>
         <div>

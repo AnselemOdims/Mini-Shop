@@ -15,7 +15,7 @@ const StyledItem = styled.li`
       flex-direction: column;
       width: 50%;
 
-      h2 {
+      h2, h3 {
         font-weight: 300;
         font-size: 1rem;
         line-height: 160%;
