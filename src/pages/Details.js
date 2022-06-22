@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { withRouter } from 'react-router-class-tools';
 import styled from 'styled-components';
+
 import Image from '../assets/images/Image.png';
 
 const StyledDetails = styled.section`
@@ -35,7 +36,7 @@ const StyledDetails = styled.section`
 
     &:nth-of-type(3) {
       color: var(--text-color-1);
-      
+
       > p {
         font-weight: 400;
         font-size: 16px;
@@ -66,10 +67,59 @@ const StyledDetails = styled.section`
 
       &:nth-of-type(1) {
         margin-bottom: 1.5rem;
+
+        div {
+          display: flex;
+          gap: 0.75rem;
+
+          button {
+            width: 3.93rem;
+            height: 2.8125rem;
+            border: solid 0.09rem var(--text-color-1);
+            font-weight: 400;
+            font-size: 1rem;
+            line-height: 1.125rem;
+            letter-spacing: 0.05em;
+            background: transparent;
+
+            &:active, &:focus {
+              background: var(--text-color-1);
+              color: var(--white)
+            }
+          }
+        }
+
       }
 
       &:nth-of-type(2) {
         margin-bottom: 2.25rem;
+
+        div {
+          display: flex;
+          gap: 0.625rem;
+
+          button {
+            width: 2rem;
+            height: 2rem;
+            color: var(--white);
+
+            &:nth-of-type(1) {
+              background: #D3D2D5;
+            }
+
+            &:nth-of-type(2) {
+              background: #2B2B2B;
+            }
+            
+            &:nth-of-type(3) {
+              background: #0F6450;
+            }
+
+            &:focus {
+              border: solid 0.09rem var(--primary-color)
+            }
+          }
+        }
       }
 
       &:nth-of-type(3) {
