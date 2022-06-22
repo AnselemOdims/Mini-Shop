@@ -154,7 +154,7 @@ const StyledDetails = styled.section`
 class Details extends Component {
   componentDidMount() {
     // const { id } = this.props.match.params;
-    // console.log(this.props.history);
+    // console.log(id);
   }
 
   render() {

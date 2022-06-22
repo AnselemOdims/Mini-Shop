@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
@@ -63,18 +64,32 @@ const Overlay = styled.div`
       &:last-of-type {
         width: 100%;
         display: flex;
+        align-items: center;
         justify-content: space-between;
         gap: 1rem;
 
-        button {
+        > div {
           width: 50%;
-          padding: 0.8rem;
+
+          &:first-of-type {
+            padding: 0.8rem;
+            border: solid 0.09rem var(--text-color-1);
+            background: transparent;
+            font-family: var(--font-1);
+            font-weight: 600;
+            text-align: center;
+          }
+        }
+
+        button {
+          width: 100%;
+          padding: 0.9rem;
           border: solid 0.09rem var(--text-color-1);
           background: transparent;
           font-family: var(--font-1);
           font-weight: 600;
 
-          &:last-of-type {
+          &:not(a):last-of-type {
             background: var(--primary-color);
             border: solid 0.09rem var(--primary-color);
             color: var(--white);
@@ -112,8 +127,12 @@ class Dropdown extends Component {
               <p>$200.00</p>
             </div>
             <div>
-              <button type="button">VIEW BAG</button>
-              <button type="button">CHECKOUT</button>
+              <div onClick={handleToggle}>
+                <Link to="/cart">VIEW BAG</Link>
+              </div>
+              <div>
+                <button type="button">CHECKOUT</button>
+              </div>
             </div>
           </div>
         </CSSTransition>
