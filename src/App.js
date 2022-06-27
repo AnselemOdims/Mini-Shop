@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 import AllCategory from './pages/AllCategory';
 import Details from './pages/Details';
 import Cart from './pages/Cart';
+import Tech from './pages/Tech';
 import './assets/styles/transition.scss';
 
 class App extends Component {
@@ -23,6 +24,8 @@ class App extends Component {
           >
             <Routes>
               <Route path="/" element={<AllCategory />} />
+              <Route path="/tech" element={<Tech />} />
+              <Route path="/clothes" element={<Tech />} />
               <Route path="/products/:id" element={<Details />} />
               <Route path="/cart" element={<Cart />} />
             </Routes>

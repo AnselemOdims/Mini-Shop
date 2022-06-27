@@ -60,12 +60,12 @@ const links = [
   },
   {
     id: 2,
-    path: '/products/1',
+    path: '/tech',
     text: 'TECH',
   },
   {
     id: 3,
-    path: '/products/2',
+    path: '/clothes',
     text: 'CLOTHES',
   },
 ];

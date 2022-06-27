@@ -2,7 +2,7 @@ import { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import Image from '../assets/images/Image.png';
+// import Image from '../assets/images/Image.png';
 import Cart from '../assets/images/cart2.svg';
 
 const StyledCard = styled.article`
