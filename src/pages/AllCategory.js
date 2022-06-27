@@ -6,7 +6,7 @@ import ProductList from '../components/ProductList';
 import { PRODUCT_QUERY } from '../Utils/queries';
 import sendRequests from '../Utils/utils';
 
-const CategoryContainer = styled.section`
+export const CategoryContainer = styled.section`
   padding: 0 6.3125rem 11.9375rem;
 
    > h1 {

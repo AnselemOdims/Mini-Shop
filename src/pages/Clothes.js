@@ -6,7 +6,7 @@ import { PRODUCT_QUERY } from '../Utils/queries';
 import sendRequests from '../Utils/utils';
 import { CategoryContainer } from './AllCategory';
 
-class Tech extends Component {
+class Clothes extends Component {
   constructor() {
     super();
     this.state = {
@@ -16,7 +16,7 @@ class Tech extends Component {
   }
 
   async componentDidMount() {
-    const res = await sendRequests(PRODUCT_QUERY('tech'));
+    const res = await sendRequests(PRODUCT_QUERY('clothes'));
     this.setState({ data: res.data, loading: false });
   }
 
@@ -24,11 +24,11 @@ class Tech extends Component {
     const { data, loading } = this.state;
     return (
       <CategoryContainer>
-        <h1>Tech</h1>
+        <h1>Clothes</h1>
         {!loading && <ProductList data={data} /> }
       </CategoryContainer>
     );
   }
 }
 
-export default Tech;
+export default Clothes;
