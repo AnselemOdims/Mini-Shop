@@ -62,16 +62,17 @@ const StyledCard = styled.article`
 const id = 2;
 class ProductCard extends Component {
   render() {
+    const { product } = this.props;
     return (
       <Link to={`/products/${id}`}>
         <StyledCard>
           <div>
-            <img src={Image} alt="product" />
+            <img src={product.gallery[0]} alt="product" />
           </div>
-          <h2>Apollo Running Short</h2>
+          <h2>{product.name}</h2>
           <p>
             $
-            <span>{50.00}</span>
+            <span>{product.prices[0].amount}</span>
           </p>
           <div className="cart-img">
             <img src={Cart} alt="cart" />

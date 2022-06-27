@@ -16,14 +16,21 @@ const StyledList = styled.div`
 `;
 
 class ProductList extends Component {
+  // componentDidMount() {
+  //   const { data } = this.props;
+  //   console.log(data);
+  // }
+
   render() {
+    const { data } = this.props;
+    console.log(data);
     return (
       <StyledList>
-        {[1, 2, 3, 4, 5, 6].map((item) => (
+        {data.category.products.map((item) => (
           <li
-            key={item}
+            key={item.name}
           >
-            <ProductCard />
+            <ProductCard product={item} />
           </li>
         ))}
       </StyledList>

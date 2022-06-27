@@ -1,7 +1,10 @@
 import { Component } from 'react';
 import styled from 'styled-components';
+// import { Query } from 'react-apollo';
 
 import ProductList from '../components/ProductList';
+import { PRODUCT_QUERY } from '../Utils/queries';
+import sendRequests from '../Utils/utils';
 
 const CategoryContainer = styled.section`
   padding: 0 6.3125rem 11.9375rem;
@@ -16,11 +19,25 @@ const CategoryContainer = styled.section`
 `;
 
 class AllCategory extends Component {
+  constructor() {
+    super();
+    this.state = {
+      data: [],
+      loading: true,
+    };
+  }
+
+  async componentDidMount() {
+    const res = await sendRequests(PRODUCT_QUERY('all'));
+    this.setState({ data: res.data, loading: false });
+  }
+
   render() {
+    const { data, loading } = this.state;
     return (
       <CategoryContainer>
         <h1>All</h1>
-        <ProductList />
+        {!loading && <ProductList data={data} /> }
       </CategoryContainer>
     );
   }

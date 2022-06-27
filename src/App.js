@@ -16,7 +16,11 @@ class App extends Component {
       <div className="App">
         <NavBar />
         <TransitionGroup component={null}>
-          <CSSTransition key={location.key} classNames="slide-in" timeout={1000}>
+          <CSSTransition
+            key={location.key}
+            classNames="slide-in"
+            timeout={1000}
+          >
             <Routes>
               <Route path="/" element={<AllCategory />} />
               <Route path="/products/:id" element={<Details />} />

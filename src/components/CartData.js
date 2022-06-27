@@ -66,7 +66,7 @@ const StyledCartData = styled.div`
       &:nth-of-type(2) {
       display: flex;
       justify-content: space-between;
-      gap: 0.5rem;
+      gap: 0.6rem;
       width: 12.5rem;
       height: 18rem;
 
