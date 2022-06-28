@@ -66,12 +66,15 @@ const StyledDetails = styled.section`
         margin-bottom: 0.5rem;
       }
 
-      &:nth-of-type(1) {
+      &.attr__container {
         margin-bottom: 1.5rem;
+        display: flex;
+        flex-direction: column;
 
         div {
           display: flex;
           gap: 0.75rem;
+          margin-bottom: 24px;
 
           button {
             width: 3.93rem;
@@ -87,43 +90,24 @@ const StyledDetails = styled.section`
               background: var(--text-color-1);
               color: var(--white)
             }
-          }
-        }
-
-      }
-
-      &:nth-of-type(2) {
-        margin-bottom: 2.25rem;
-
-        div {
-          display: flex;
-          gap: 0.625rem;
-
-          button {
+          
+          &.color__btn {
             width: 2rem;
             height: 2rem;
             color: var(--white);
-
-            &:nth-of-type(1) {
-              background: #D3D2D5;
-            }
-
-            &:nth-of-type(2) {
-              background: #2B2B2B;
-            }
-            
-            &:nth-of-type(3) {
-              background: #0F6450;
-            }
 
             &:focus {
               border: solid 0.09rem var(--primary-color)
             }
           }
+
+          }
         }
+
       }
 
-      &:nth-of-type(3) {
+
+      &.price__container {
         margin-bottom: 1.25rem;
 
         p {
@@ -136,7 +120,7 @@ const StyledDetails = styled.section`
         }
       }
 
-      &:nth-of-type(4) {
+      &.add__btn {
         margin-bottom: 2.5rem;
 
           button {
@@ -148,9 +132,17 @@ const StyledDetails = styled.section`
           }
       }
 
-      &:nth-of-type(5) {
+      &.desc {
         p {
-          
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 159.96%;
+          margin-bottom: 20px
+        }
+
+        h3 {
+          font-weight: 600;
+          margin-bottom: 10px
         }
       }
 
@@ -194,31 +186,42 @@ class Details extends Component {
         <div>
           <h2>{data?.product.brand}</h2>
           <h3>{data?.product.name}</h3>
-          <div>
-            <p>SIZE: </p>
-            <div>
-              <button type="button">XS</button>
-              <button type="button">S</button>
-              <button type="button">M</button>
-              <button type="button">L</button>
-            </div>
+          { data?.product.attributes.length > 0 && (
+          <div className="attr__container">
+            {data?.product?.attributes.map(((attr) => (
+              <>
+                <p>
+                  {attr.name.toUpperCase()}
+                  :
+                  {' '}
+                </p>
+                <div>
+                  {attr.items.map(({ value }) => (
+                    attr.name === 'Color' ? (
+                      <button
+                        key={value}
+                        type="button"
+                        style={{ backgroundColor: value }}
+                        className="color__btn"
+                        aria-label="product color"
+                      />
+                    ) : (
+                      <button type="button">{value}</button>
+                    )
+                  ))}
+                </div>
+              </>
+            )))}
           </div>
-          <div>
-            <p>COLOR: </p>
-            <div>
-              <button type="button">X</button>
-              <button type="button">S</button>
-              <button type="button">M</button>
-            </div>
-          </div>
-          <div>
+          )}
+          <div className="price__container">
             <p>PRICE: </p>
             <span>$50.00</span>
           </div>
-          <div>
+          <div className="add__btn">
             <button type="button">ADD TO CART</button>
           </div>
-          <div dangerouslySetInnerHTML={{ __html: data?.product.description }} />
+          <div className="desc" dangerouslySetInnerHTML={{ __html: data?.product.description }} />
         </div>
       </StyledDetails>
     );
