@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 import ProductList from '../components/ProductList';
 import { PRODUCT_QUERY } from '../Utils/queries';

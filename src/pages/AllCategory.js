@@ -22,7 +22,7 @@ class AllCategory extends Component {
   constructor() {
     super();
     this.state = {
-      data: [],
+      data: null,
       loading: true,
     };
   }

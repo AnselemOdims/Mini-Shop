@@ -2,7 +2,8 @@ import { Component } from 'react';
 import { withRouter } from 'react-router-class-tools';
 import styled from 'styled-components';
 
-import Image from '../assets/images/Image.png';
+import sendRequests from '../Utils/utils';
+import { GET_PRODUCT_QUERY } from '../Utils/queries';
 
 const StyledDetails = styled.section`
   padding: 9.5rem 15.21% 11.9375rem 6.72%;
@@ -147,30 +148,52 @@ const StyledDetails = styled.section`
           }
       }
 
+      &:nth-of-type(5) {
+        p {
+          
+        }
+      }
+
     }
     }
   }
 `;
 class Details extends Component {
-  componentDidMount() {
-    // const { id } = this.props.match.params;
-    // console.log(id);
+  constructor() {
+    super();
+    this.state = {
+      data: null,
+      imgSrc: '',
+    };
+  }
+
+  async componentDidMount() {
+    const { id } = this.props.match.params;
+    const res = await sendRequests(GET_PRODUCT_QUERY(id));
+    this.setState({ data: res.data });
   }
 
   render() {
+    const { data, imgSrc } = this.state;
+    console.log(data);
     return (
       <StyledDetails>
         <div>
-          <img src={Image} alt="product" />
-          <img src={Image} alt="product" />
-          <img src={Image} alt="product" />
+          {data && data.product.gallery.map((item) => (
+            <img
+              key={item}
+              src={item}
+              alt="product"
+              onClick={() => this.setState({ imgSrc: item })}
+            />
+          ))}
         </div>
         <div>
-          <img src={Image} alt="product" />
+          <img src={imgSrc || data?.product?.gallery[0]} alt="product" />
         </div>
         <div>
-          <h2>Apollo</h2>
-          <h3>Running Short</h3>
+          <h2>{data?.product.brand}</h2>
+          <h3>{data?.product.name}</h3>
           <div>
             <p>SIZE: </p>
             <div>
@@ -195,11 +218,7 @@ class Details extends Component {
           <div>
             <button type="button">ADD TO CART</button>
           </div>
-          <p>
-            Find stunning women&#39;s cocktail dresses and party dresses. Stand out
-            in lace and metallic cocktail dresses and party dresses from all
-            your favorite brands.
-          </p>
+          <div dangerouslySetInnerHTML={{ __html: data?.product.description }} />
         </div>
       </StyledDetails>
     );

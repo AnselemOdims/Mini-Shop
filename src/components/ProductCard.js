@@ -59,12 +59,11 @@ const StyledCard = styled.article`
 
 `;
 
-const id = 2;
 class ProductCard extends Component {
   render() {
     const { product } = this.props;
     return (
-      <Link to={`/products/${id}`}>
+      <Link to={`/products/${product.id}`}>
         <StyledCard>
           <div>
             <img src={product.gallery[0]} alt="product" />

@@ -23,10 +23,9 @@ class ProductList extends Component {
 
   render() {
     const { data } = this.props;
-    console.log(data);
     return (
       <StyledList>
-        {data.category.products.map((item) => (
+        {data && data.category.products.map((item) => (
           <li
             key={item.name}
           >
