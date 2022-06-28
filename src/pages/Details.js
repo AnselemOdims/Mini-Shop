@@ -1,9 +1,11 @@
 import { Component } from 'react';
 import { withRouter } from 'react-router-class-tools';
 import styled from 'styled-components';
+import { SwitchTransition, CSSTransition } from 'react-transition-group';
 
 import sendRequests from '../Utils/utils';
 import { GET_PRODUCT_QUERY } from '../Utils/queries';
+import '../assets/styles/transition.scss';
 
 const StyledDetails = styled.section`
   padding: 9.5rem 15.21% 11.9375rem 6.72%;
@@ -24,6 +26,7 @@ const StyledDetails = styled.section`
       img {
         width: 5rem;
         height: 5rem;
+        cursor: pointer;
       }
     }
 
@@ -181,7 +184,15 @@ class Details extends Component {
           ))}
         </div>
         <div>
-          <img src={imgSrc || data?.product?.gallery[0]} alt="product" />
+          <SwitchTransition>
+            <CSSTransition
+              key={imgSrc}
+              timeout={1000}
+              classNames="flip"
+            >
+              <img src={imgSrc || data?.product?.gallery[0]} alt="product" />
+            </CSSTransition>
+          </SwitchTransition>
         </div>
         <div>
           <h2>{data?.product.brand}</h2>

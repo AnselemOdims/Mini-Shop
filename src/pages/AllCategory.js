@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import styled from 'styled-components';
-// import { Query } from 'react-apollo';
 
 import ProductList from '../components/ProductList';
 import { PRODUCT_QUERY } from '../Utils/queries';
