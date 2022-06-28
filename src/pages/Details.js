@@ -216,7 +216,10 @@ class Details extends Component {
           )}
           <div className="price__container">
             <p>PRICE: </p>
-            <span>$50.00</span>
+            <span>
+              $
+              {data?.product.prices[0].amount}
+            </span>
           </div>
           <div className="add__btn">
             <button type="button">ADD TO CART</button>
