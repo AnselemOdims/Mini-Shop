@@ -8,12 +8,13 @@ export const CURRENCY_CHANGED = 'shoppingfy/cart/CURRENCY_CHANGED';
 // addCart action creator
 export const addCart = (payload) => ({
   type: CART_ADDED,
-  payload,
+  payload: { ...payload, qty: 1 },
 });
 
 // incrementQuantity action creator
-export const incrementQuantity = () => ({
+export const incrementQuantity = (payload) => ({
   type: QUANTITY_INCREMENTED,
+  payload,
 });
 
 // decrementQuantity action creator

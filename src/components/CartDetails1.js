@@ -15,7 +15,7 @@ class CartDetails1 extends Component {
           {prices?.[0].amount}
         </p>
         <div className="attr__container">
-          {attributes.map(((attr) => (
+          { attributes && attributes.map(((attr) => (
             <>
               <p>
                 {attr.name.toUpperCase()}

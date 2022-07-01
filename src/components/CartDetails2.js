@@ -1,24 +1,25 @@
 import { Component } from 'react';
+import { connect } from 'react-redux';
 
-import Image from '../assets/images/Image.png';
+import { incrementQuantity } from '../redux/cart/actions/cartAction';
 
 class CartDetails2 extends Component {
   render() {
-    const { gallery } = this.props.data;
+    const { data, incrementQuantity } = this.props;
 
     return (
       <div>
         <div>
-          <button type="button">+</button>
-          <span>{1}</span>
+          <button type="button" onClick={() => incrementQuantity(data.id)}>+</button>
+          <span>{data.qty}</span>
           <button type="button">-</button>
         </div>
         <div>
-          <img src={gallery[0]} alt="product" />
+          <img src={data.gallery[0]} alt="product" />
         </div>
       </div>
     );
   }
 }
 
-export default CartDetails2;
+export default connect(null, { incrementQuantity })(CartDetails2);

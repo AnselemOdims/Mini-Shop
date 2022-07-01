@@ -38,28 +38,45 @@ const StyledCartData = styled.div`
           }
         }
 
-        > div {
+        > div.attr__container {
+        margin-bottom: 1.5rem;
+        display: flex;
+        flex-direction: column;
+
+        div {
           display: flex;
-          gap: 0.5rem;
-          margin-bottom: 1rem;
+          gap: 0.75rem;
+          margin-bottom: 24px;
 
-          &:nth-of-type(1) {
+          button {
+            width: 3.93rem;
+            height: 2.8125rem;
+            border: solid 0.09rem var(--text-color-1);
+            font-weight: 400;
+            font-size: 1rem;
+            line-height: 1.125rem;
+            letter-spacing: 0.05em;
+            background: transparent;
 
-            button {
-              width: 3.8125rem;
-              border: solid 0.09rem var(--text-color-1);
-              height: 2.8125rem;
-              background: var(--white);
+            &:active, &:focus {
+              background: var(--text-color-1);
+              color: var(--white)
+            }
+          
+          &.color__btn {
+            width: 2rem;
+            height: 2rem;
+            color: var(--white);
+
+            &:focus {
+              border: solid 0.09rem var(--primary-color)
             }
           }
 
-          &:nth-of-type(2) {
-            button {
-              width: 2.125rem;
-              height: 2.125rem;
-            }
           }
         }
+
+      }
 
       }
 

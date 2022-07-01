@@ -49,7 +49,7 @@ const StyledCart = styled.section`
 class Cart extends Component {
   render() {
     const { cart } = this.props;
-
+    console.log(cart);
     return (
       <StyledCart>
         <h1>CART</h1>
