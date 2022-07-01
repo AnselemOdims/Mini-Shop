@@ -117,9 +117,9 @@ class Dropdown extends Component {
               <span>3 items</span>
             </div>
             <ul>
+              {/* <DropdownItem />
               <DropdownItem />
-              <DropdownItem />
-              <DropdownItem />
+              <DropdownItem /> */}
             </ul>
             <div>
               <p>Total</p>

@@ -112,11 +112,14 @@ const StyledCartData = styled.div`
 
 class CartData extends Component {
   render() {
+    const { data } = this.props;
+    console.log(data);
+
     return (
       <StyledCartData>
         <div>
-          <CartDetails1 />
-          <CartDetails2 />
+          <CartDetails1 data={data} />
+          <CartDetails2 data={data} />
         </div>
         <hr />
       </StyledCartData>

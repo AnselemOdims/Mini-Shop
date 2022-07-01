@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 import CartData from '../components/CartData';
 
@@ -47,13 +48,16 @@ const StyledCart = styled.section`
 
 class Cart extends Component {
   render() {
+    const { cart } = this.props;
+
     return (
       <StyledCart>
         <h1>CART</h1>
         <hr />
         <div>
-          <CartData />
-          <CartData />
+          { cart.map((item) => (
+            <CartData key={item.id} data={item} />
+          ))}
         </div>
         <div>
           <p>Tax 21%: $42.00</p>
@@ -66,4 +70,4 @@ class Cart extends Component {
   }
 }
 
-export default Cart;
+export default connect(({ cartReducer: { cart } }) => ({ cart }))(Cart);

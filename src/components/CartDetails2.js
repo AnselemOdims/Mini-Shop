@@ -4,6 +4,8 @@ import Image from '../assets/images/Image.png';
 
 class CartDetails2 extends Component {
   render() {
+    const { gallery } = this.props.data;
+
     return (
       <div>
         <div>
@@ -12,7 +14,7 @@ class CartDetails2 extends Component {
           <button type="button">-</button>
         </div>
         <div>
-          <img src={Image} alt="product" />
+          <img src={gallery[0]} alt="product" />
         </div>
       </div>
     );

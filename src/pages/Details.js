@@ -2,10 +2,12 @@ import { Component } from 'react';
 import { withRouter } from 'react-router-class-tools';
 import styled from 'styled-components';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
+import { connect } from 'react-redux';
 
 import sendRequests from '../Utils/utils';
 import { GET_PRODUCT_QUERY } from '../Utils/queries';
 import '../assets/styles/transition.scss';
+import { addCart } from '../redux/cart/actions/cartAction';
 
 const StyledDetails = styled.section`
   padding: 9.5rem 15.21% 11.9375rem 6.72%;
@@ -168,6 +170,11 @@ class Details extends Component {
     this.setState({ data: res.data });
   }
 
+  handleAddProduct = () => {
+    const { data } = this.state;
+    this.props.addCart(data.product);
+  };
+
   render() {
     const { data, imgSrc } = this.state;
     console.log(data);
@@ -233,7 +240,7 @@ class Details extends Component {
             </span>
           </div>
           <div className="add__btn">
-            <button type="button">ADD TO CART</button>
+            <button type="button" onClick={this.handleAddProduct}>ADD TO CART</button>
           </div>
           <div className="desc" dangerouslySetInnerHTML={{ __html: data?.product.description }} />
         </div>
@@ -242,6 +249,6 @@ class Details extends Component {
   }
 }
 
-const DetailsWithRouter = withRouter(Details);
+const ConnectedDetails = connect(null, { addCart })(Details);
 
-export default DetailsWithRouter;
+export default withRouter(ConnectedDetails);
