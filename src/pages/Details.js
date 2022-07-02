@@ -161,6 +161,7 @@ class Details extends Component {
     this.state = {
       data: null,
       imgSrc: '',
+      attrs: {},
     };
   }
 
@@ -170,14 +171,24 @@ class Details extends Component {
     this.setState({ data: res.data });
   }
 
-  handleAddProduct = () => {
+  handleAddProduct = (attr) => {
     const { data } = this.state;
-    this.props.addCart(data.product);
+    this.props.addCart({ ...data.product, attr });
   };
 
+  handleAttrChange = (name, value) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      attrs: {
+        ...prevState.attrs,
+        [name]: value,
+      },
+    }));
+  }
+
   render() {
-    const { data, imgSrc } = this.state;
-    console.log(data);
+    const { data, imgSrc, attrs } = this.state;
+    console.log(attrs);
     return (
       <StyledDetails>
         <div>
@@ -219,12 +230,19 @@ class Details extends Component {
                       <button
                         key={value}
                         type="button"
-                        style={{ backgroundColor: value }}
+                        style={{ backgroundColor: attrs[attr.name] === value ? 'red' : value }}
                         className="color__btn"
                         aria-label="product color"
+                        onClick={() => this.handleAttrChange(attr.name, value)}
                       />
                     ) : (
-                      <button type="button">{value}</button>
+                      <button
+                        type="button"
+                        onClick={() => this.handleAttrChange(attr.name, value)}
+                        style={{ backgroundColor: attrs[attr.name] === value && 'red' }}
+                      >
+                        {value}
+                      </button>
                     )
                   ))}
                 </div>
@@ -240,7 +258,7 @@ class Details extends Component {
             </span>
           </div>
           <div className="add__btn">
-            <button type="button" onClick={this.handleAddProduct}>ADD TO CART</button>
+            <button type="button" onClick={() => this.handleAddProduct(attrs)}>ADD TO CART</button>
           </div>
           <div className="desc" dangerouslySetInnerHTML={{ __html: data?.product.description }} />
         </div>

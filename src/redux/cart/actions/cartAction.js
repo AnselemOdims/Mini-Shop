@@ -5,6 +5,12 @@ export const QUANTITY_DECREMENTED = 'shoppingfy/cart/QUANTITY_DECREMENTED';
 export const ATTRIBUTE_CHANGED = 'shoppingfy/cart/ATTRIBUTE_CHANGED';
 export const CURRENCY_CHANGED = 'shoppingfy/cart/CURRENCY_CHANGED';
 
+function includeAttr(payload) {
+  return payload.attributes.map(({ name }) => ({
+    [name]: '',
+  }));
+}
+
 // addCart action creator
 export const addCart = (payload) => ({
   type: CART_ADDED,
