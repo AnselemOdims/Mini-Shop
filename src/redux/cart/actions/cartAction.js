@@ -18,8 +18,9 @@ export const incrementQuantity = (payload) => ({
 });
 
 // decrementQuantity action creator
-export const decrementQuantity = () => ({
+export const decrementQuantity = (payload) => ({
   type: QUANTITY_DECREMENTED,
+  payload,
 });
 
 // changeAttribute action creator

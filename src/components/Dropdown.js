@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import DropdownItem from './DropdownItem';
 import '../assets/styles/transition.scss';
@@ -103,7 +104,7 @@ const Overlay = styled.div`
 
 class Dropdown extends Component {
   render() {
-    const { show, handleToggle } = this.props;
+    const { show, handleToggle, cart } = this.props;
 
     return (
       <Overlay>
@@ -117,9 +118,9 @@ class Dropdown extends Component {
               <span>3 items</span>
             </div>
             <ul>
-              {/* <DropdownItem />
-              <DropdownItem />
-              <DropdownItem /> */}
+              { cart.map((item) => (
+                <DropdownItem key={item.id} data={item} />
+              ))}
             </ul>
             <div>
               <p>Total</p>
@@ -145,4 +146,4 @@ Dropdown.propTypes = {
   handleToggle: PropTypes.func.isRequired,
 };
 
-export default Dropdown;
+export default connect((({ cartReducer }) => ({ cart: cartReducer.cart })))(Dropdown);

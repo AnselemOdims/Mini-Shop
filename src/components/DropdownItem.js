@@ -122,10 +122,12 @@ const StyledItem = styled.li`
 
 class DropdownItem extends Component {
   render() {
+    const { data } = this.props;
+
     return (
       <StyledItem>
-        <CartDetails1 />
-        <CartDetails2 />
+        <CartDetails1 data={data} />
+        <CartDetails2 data={data} />
       </StyledItem>
     );
   }
