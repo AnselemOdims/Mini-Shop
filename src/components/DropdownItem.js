@@ -7,7 +7,7 @@ import CartDetails2 from './CartDetails2';
 const StyledItem = styled.li`
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.25rem;
 
   > div {
     &:nth-of-type(1) {
@@ -19,65 +19,67 @@ const StyledItem = styled.li`
         font-weight: 300;
         font-size: 1rem;
         line-height: 160%;
-        margin-bottom: 0.7rem;
+        margin-bottom: 0.4rem;
+      }
+
+      h2 {
+        margin-bottom: 0.2rem;
       }
 
       > p {
           margin-bottom: 0.5rem;
-          font-weight: 350;
+          font-weight: 400;
 
         &:nth-of-type(1) {
           font-weight: 500;
           font-size: 1.125rem;
           line-height: 160%;
-          margin-bottom: 0.7rem;
+          margin-bottom: 0.5rem;
         }
 
       }
 
-      > div {
+      > div.attr__container {
         display: flex;
-        align-items: center;
-        gap: 0.5rem;
+        flex-direction: column;
 
-        &:nth-of-type(1) {
-          margin-bottom: 0.6rem;
+        p {
+          margin-bottom: 0.5rem;
+          font-size: 0.875rem;
+        }
+
+        div {
+          display: flex;
+          gap: 0.5rem;
 
           button {
             border: solid 0.09rem var(--text-color-1);
-            padding: 0.5rem;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 160%;
             background: transparent;
-            font-size: 0.7rem;
+            padding: 5px 8px;
 
-            &:focus {
+            &:active, &:focus {
               background: var(--text-color-1);
-              color: var(--white);
+              color: var(--white)
             }
-          }
-        }
-
-        &:nth-of-type(2) {
-
-          button {
-            border: none;
-            padding: 0.4rem;
-            background: var(--text-color-3);
+          
+          &.color__btn {
+            width: 1rem;
+            height: 1rem;
             color: var(--white);
-            border: solid 0.09rem transparent;
-
-            &:nth-of-type(2) {
-              background: var(--primary-color);
-            }
-
-            &:nth-of-type(3) {
-              background: var(--text-color-1);
-            }
+            padding: 0;
+            margin-bottom: 0.5rem;
 
             &:focus {
-              border: solid 0.09rem var(--primary-color);
+              border: solid 0.09rem var(--primary-color)
             }
           }
+
+          }
         }
+
       }
     }
 
@@ -96,9 +98,11 @@ const StyledItem = styled.li`
 
           button {
             border: solid 0.09rem var(--text-color-1);
-            padding: 0.2rem 0.5rem;
             background: transparent;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            width: 1.5rem;
+            height: 1.5rem;
           }
 
           span {

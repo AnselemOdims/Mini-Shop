@@ -130,7 +130,6 @@ const StyledCartData = styled.div`
 class CartData extends Component {
   render() {
     const { data } = this.props;
-    console.log(data);
 
     return (
       <StyledCartData>

@@ -24,9 +24,10 @@ const Overlay = styled.div`
     }
 
     &:nth-of-type(2) {
-    width: 27%;
+    width: 30%;
     position: absolute;
-    left: 66%;
+    top: 5.02rem;
+    left: 65%;
     height: 37.5rem;
     background: var(--white);
     z-index: 10;
@@ -48,8 +49,10 @@ const Overlay = styled.div`
         margin: 2rem 0;
 
         span {
+          font-weight: 500;
+
           &:first-of-type {
-            font-weight: 600;
+            font-weight: 700;
           }
         }
       }
@@ -58,7 +61,7 @@ const Overlay = styled.div`
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin: 2rem 0;
+        margin: 2.6875rem 0 2.125rem;
         font-weight: 600;
       }
 
