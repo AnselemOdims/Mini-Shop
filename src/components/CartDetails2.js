@@ -6,7 +6,7 @@ import { incrementQuantity, decrementQuantity } from '../redux/cart/actions/cart
 class CartDetails2 extends Component {
   render() {
     const { data, incrementQuantity, decrementQuantity } = this.props;
-    console.log(data);
+    // console.log(data);
     return (
       <div>
         <div>

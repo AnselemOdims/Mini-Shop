@@ -28,7 +28,7 @@ const Overlay = styled.div`
     position: absolute;
     top: 5.02rem;
     left: 65%;
-    height: 37.5rem;
+    /* height: 37.5rem; */
     background: var(--white);
     z-index: 10;
     overflow: auto;
@@ -108,7 +108,15 @@ const Overlay = styled.div`
 class Dropdown extends Component {
   render() {
     const { show, handleToggle, cart } = this.props;
-
+    const getQty = () => {
+      let itemsNum;
+      if (cart.length > 0) {
+        itemsNum = cart.reduce((a, b) => a.qty + b.qty);
+        if (cart.length === 1) itemsNum = itemsNum.qty;
+        return itemsNum;
+      }
+      return itemsNum;
+    };
     return (
       <Overlay>
         <CSSTransition in={show} timeout={500} classNames="drop" unmountOnExit>
@@ -118,7 +126,10 @@ class Dropdown extends Component {
           <div>
             <div>
               <span>My Bag, </span>
-              <span>3 items</span>
+              <span>
+                {getQty() || 0}
+                item
+              </span>
             </div>
             <ul>
               { cart.map((item) => (

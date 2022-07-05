@@ -188,7 +188,7 @@ class Details extends Component {
 
   render() {
     const { data, imgSrc, attrs } = this.state;
-    console.log(attrs);
+
     return (
       <StyledDetails>
         <div>

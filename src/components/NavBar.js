@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Logo from '../assets/images/logo.svg';
 import Dollar from '../assets/images/dollar.svg';
@@ -48,6 +49,24 @@ const Header = styled.header`
       img {
         cursor: pointer;
       }
+
+      div {
+        position: relative;
+
+        span {
+          position: absolute;
+          bottom: 12px;
+          right: -8px;
+          font-size: 12px;
+          font-weight: 550;
+          width: 1.1rem;
+          height: 1.1rem;
+          border-radius: 50%;
+          background: black;
+          text-align: center;
+          color: #fff;
+        }
+      }
     }
   }
 `;
@@ -85,6 +104,17 @@ class NavBar extends Component {
 
   render() {
     const { showNavBar } = this.state;
+    const { cart } = this.props;
+
+    const getQty = () => {
+      let itemsNum;
+      if (cart.length > 0) {
+        itemsNum = cart.reduce((a, b) => a.qty + b.qty);
+        if (cart.length === 1) itemsNum = itemsNum.qty;
+        return itemsNum;
+      }
+      return itemsNum;
+    };
 
     return (
       <div>
@@ -110,7 +140,10 @@ class NavBar extends Component {
           </div>
           <div>
             <img src={Dollar} alt="site logo" />
-            <img src={Cart} alt="site logo" onClick={this.handleToggle} />
+            <div>
+              <img src={Cart} alt="site logo" onClick={this.handleToggle} />
+              <span>{getQty() || 0}</span>
+            </div>
           </div>
         </Header>
         <Dropdown show={showNavBar} handleToggle={this.handleToggle} />
@@ -119,4 +152,5 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default connect((({ cartReducer }) => ({ cart: cartReducer.cart })))(NavBar);
+// export default NavBar;

@@ -112,6 +112,7 @@ const StyledItem = styled.li`
         }
 
         &:nth-of-type(2) {
+            max-height: 190px;
             width: 100%;
 
           img {
