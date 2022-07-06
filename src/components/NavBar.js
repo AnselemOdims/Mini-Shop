@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import { Component } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
@@ -52,6 +53,7 @@ const Header = styled.header`
 
       div {
         position: relative;
+        cursor: pointer;
 
         span {
           position: absolute;
@@ -106,15 +108,8 @@ class NavBar extends Component {
     const { showNavBar } = this.state;
     const { cart } = this.props;
 
-    const getQty = () => {
-      let itemsNum;
-      if (cart.length > 0) {
-        itemsNum = cart.reduce((a, b) => a.qty + b.qty);
-        if (cart.length === 1) itemsNum = itemsNum.qty;
-        return itemsNum;
-      }
-      return itemsNum;
-    };
+    const getQty = () => (
+      (cart.length > 0 && cart.length === 1) ? cart[0].qty : cart.reduce((a, b) => a + b.qty, 0));
 
     return (
       <div>
@@ -140,17 +135,16 @@ class NavBar extends Component {
           </div>
           <div>
             <img src={Dollar} alt="site logo" />
-            <div>
-              <img src={Cart} alt="site logo" onClick={this.handleToggle} />
+            <div onClick={this.handleToggle}>
+              <img src={Cart} alt="site logo" />
               <span>{getQty() || 0}</span>
             </div>
           </div>
         </Header>
-        <Dropdown show={showNavBar} handleToggle={this.handleToggle} />
+        <Dropdown show={showNavBar} handleToggle={this.handleToggle} cartQty={getQty()} />
       </div>
     );
   }
 }
 
 export default connect((({ cartReducer }) => ({ cart: cartReducer.cart })))(NavBar);
-// export default NavBar;

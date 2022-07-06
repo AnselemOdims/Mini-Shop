@@ -5,9 +5,12 @@ import CartDetails1 from './CartDetails1';
 import CartDetails2 from './CartDetails2';
 
 const StyledItem = styled.li`
+  display: grid;
+  grid-template-columns:1fr 1fr;
+  
   display: flex;
   justify-content: space-between;
-  gap: 1.25rem;
+  gap: 1.5rem;
 
   > div {
     &:nth-of-type(1) {
