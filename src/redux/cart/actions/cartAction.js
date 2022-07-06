@@ -4,12 +4,13 @@ export const QUANTITY_INCREMENTED = 'shoppingfy/cart/QUANTITY_INCREMENTED';
 export const QUANTITY_DECREMENTED = 'shoppingfy/cart/QUANTITY_DECREMENTED';
 export const ATTRIBUTE_CHANGED = 'shoppingfy/cart/ATTRIBUTE_CHANGED';
 export const CURRENCY_CHANGED = 'shoppingfy/cart/CURRENCY_CHANGED';
+export const UNIT_PRICE_CHANGED = 'shoppingfy/cart/UNIT_PRICE_CHANGED';
 
-function includeAttr(payload) {
-  return payload.attributes.map(({ name }) => ({
-    [name]: '',
-  }));
-}
+// function includeAttr(payload) {
+//   return payload.attributes.map(({ name }) => ({
+//     [name]: '',
+//   }));
+// }
 
 // addCart action creator
 export const addCart = (payload) => ({
@@ -38,5 +39,11 @@ export const changeAttribute = (payload) => ({
 // changeCurrency action creator
 export const changeCurrency = (payload) => ({
   type: CURRENCY_CHANGED,
+  payload,
+});
+
+// unitPrice change action creator
+export const changeUnitPrice = (payload) => ({
+  type: UNIT_PRICE_CHANGED,
   payload,
 });
