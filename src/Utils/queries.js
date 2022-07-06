@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 // import ApolloClient, { InMemoryCache } from 'apollo-boost';
 
-export const TEST_QUERY = gql`
+export const CURRENCY_QUERY = gql`
   {
     currencies {
         label

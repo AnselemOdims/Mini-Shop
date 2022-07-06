@@ -3,12 +3,12 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
 import cartReducer from './cart/reducers/cart';
-import currencyReducer from './cart/reducers/currency';
+import productReducer from './cart/reducers/products';
 
 // combine one or more reducers
 const reducer = combineReducers({
   cartReducer,
-  currencyReducer,
+  productReducer,
 });
 
 // create the store

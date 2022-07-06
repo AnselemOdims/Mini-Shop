@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 import DropdownItem from './DropdownItem';
 import '../assets/styles/transition.scss';
+import CurrencySelect from './CurrencySelect';
 
 const Overlay = styled.div`
 
@@ -144,6 +145,7 @@ class Dropdown extends Component {
                 <button type="button">CHECKOUT</button>
               </div>
             </div>
+            <CurrencySelect />
           </div>
         </CSSTransition>
       </Overlay>

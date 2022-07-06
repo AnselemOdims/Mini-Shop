@@ -16,16 +16,11 @@ const StyledList = styled.div`
 `;
 
 class ProductList extends Component {
-  // componentDidMount() {
-  //   const { data } = this.props;
-  //   console.log(data);
-  // }
-
   render() {
     const { data } = this.props;
     return (
       <StyledList>
-        {data && data.category.products.map((item) => (
+        {data && data.map((item) => (
           <li
             key={item.name}
           >

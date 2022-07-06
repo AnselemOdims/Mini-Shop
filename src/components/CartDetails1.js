@@ -3,7 +3,7 @@ import { Component } from 'react';
 class CartDetails1 extends Component {
   render() {
     const {
-      brand, name, prices, attributes, qty,
+      brand, name, unitPrice, attributes, qty, currencySymbol,
     } = this.props.data;
 
     return (
@@ -11,8 +11,8 @@ class CartDetails1 extends Component {
         <h2>{brand}</h2>
         <h3>{name}</h3>
         <p>
-          $
-          {(prices?.[0].amount * qty).toFixed(2)}
+          {currencySymbol}
+          {(unitPrice * qty).toFixed(2)}
         </p>
         <div className="attr__container">
           { attributes && attributes.map(((attr) => (

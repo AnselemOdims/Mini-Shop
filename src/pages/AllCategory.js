@@ -1,9 +1,11 @@
 import { Component } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 import ProductList from '../components/ProductList';
 import { PRODUCT_QUERY } from '../Utils/queries';
 import sendRequests from '../Utils/utils';
+import { getProductsAsync } from '../redux/cart/actions/productActions';
 
 export const CategoryContainer = styled.section`
   padding: 0 6.3125rem 11.9375rem;
@@ -18,28 +20,31 @@ export const CategoryContainer = styled.section`
 `;
 
 class AllCategory extends Component {
-  constructor() {
-    super();
-    this.state = {
-      data: null,
-      loading: true,
-    };
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     data: null,
+  //     loading: true,
+  //   };
+  // }
 
   async componentDidMount() {
-    const res = await sendRequests(PRODUCT_QUERY('all'));
-    this.setState({ data: res.data, loading: false });
+    const { getProductsAsync } = this.props;
+    await getProductsAsync('all');
   }
 
   render() {
-    const { data, loading } = this.state;
+    // const { data, loading } = this.state;
+    const { products } = this.props;
+    console.log(products);
     return (
       <CategoryContainer>
         <h1>All</h1>
-        {!loading && <ProductList data={data} /> }
+        <ProductList data={products} />
       </CategoryContainer>
     );
   }
 }
 
-export default AllCategory;
+// export default AllCategory;
+export default connect(({ productReducer: { products } }) => ({ products }), { getProductsAsync })(AllCategory);
