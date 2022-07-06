@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { withRouter } from 'react-router-class-tools';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { connect } from 'react-redux';
 
 import NavBar from './components/NavBar';
 import AllCategory from './pages/AllCategory';
@@ -10,8 +11,14 @@ import Cart from './pages/Cart';
 import Tech from './pages/Tech';
 import Clothes from './pages/Clothes';
 import './assets/styles/transition.scss';
+import { getProductsAsync } from './redux/cart/actions/productActions';
 
 class App extends Component {
+  async componentDidMount() {
+    const { getProductsAsync } = this.props;
+    await getProductsAsync();
+  }
+
   render() {
     const { location } = this.props;
     return (
@@ -37,6 +44,6 @@ class App extends Component {
   }
 }
 
-const Apps = withRouter(App);
+const Apps = connect(null, { getProductsAsync })(App);
 
-export default Apps;
+export default withRouter(Apps);

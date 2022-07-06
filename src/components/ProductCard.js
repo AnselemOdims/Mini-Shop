@@ -70,8 +70,8 @@ class ProductCard extends Component {
           </div>
           <h2>{product.name}</h2>
           <p>
-            $
-            <span>{product.prices[0].amount}</span>
+            {product.currencySymbol}
+            <span>{product.unitPrice}</span>
           </p>
           <div className="cart-img">
             <img src={Cart} alt="cart" />

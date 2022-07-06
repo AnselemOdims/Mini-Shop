@@ -1,34 +1,21 @@
 import { Component } from 'react';
-// import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 import ProductList from '../components/ProductList';
-import { PRODUCT_QUERY } from '../Utils/queries';
-import sendRequests from '../Utils/utils';
 import { CategoryContainer } from './AllCategory';
 
 class Tech extends Component {
-  constructor() {
-    super();
-    this.state = {
-      data: [],
-      loading: true,
-    };
-  }
-
-  async componentDidMount() {
-    const res = await sendRequests(PRODUCT_QUERY('tech'));
-    this.setState({ data: res.data, loading: false });
-  }
-
   render() {
-    const { data, loading } = this.state;
+    const { tech } = this.props;
+
     return (
       <CategoryContainer>
         <h1>Tech</h1>
-        {!loading && <ProductList data={data} /> }
+        <ProductList data={tech} />
       </CategoryContainer>
     );
   }
 }
 
-export default Tech;
+export default
+connect(({ productReducer: { tech } }) => ({ tech }))(Tech);
