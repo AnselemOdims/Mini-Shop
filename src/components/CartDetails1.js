@@ -3,7 +3,7 @@ import { Component } from 'react';
 class CartDetails1 extends Component {
   render() {
     const {
-      brand, name, unitPrice, attributes, qty, currencySymbol,
+      brand, name, unitPrice, attributes, qty, currencySymbol, attr,
     } = this.props.data;
 
     return (
@@ -15,25 +15,30 @@ class CartDetails1 extends Component {
           {(unitPrice * qty).toFixed(2)}
         </p>
         <div className="attr__container">
-          { attributes && attributes.map(((attr) => (
+          { attributes && attributes.map(((item) => (
             <>
               <p>
-                {attr.name.toUpperCase()}
+                {item.name.toUpperCase()}
                 :
                 {' '}
               </p>
               <div>
-                {attr.items.map(({ value }) => (
-                  attr.name === 'Color' ? (
+                {item.items.map(({ value }) => (
+                  item.name === 'Color' ? (
                     <button
                       key={value}
                       type="button"
-                      style={{ backgroundColor: value }}
+                      style={{ backgroundColor: value, border: attr[item.name] === value && '0.09rem #5ECE7B' }}
                       className="color__btn"
                       aria-label="product color"
                     />
                   ) : (
-                    <button type="button">{value}</button>
+                    <button
+                      type="button"
+                      style={{ backgroundColor: attr[item.name] === value && '#1D1F22', color: attr[item.name] === value ? '#fff' : '#1D1F22' }}
+                    >
+                      {value}
+                    </button>
                   )
                 ))}
               </div>

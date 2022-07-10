@@ -37,12 +37,20 @@ const calculate = (cart, payload) => (type) => cart.map((item) => {
  * @returns - a new array of items
  */
 const handleAdd = (cart, payload) => {
-  const addedItem = cart.find((item) => item.id === payload.id);
-  const filteredItems = cart.filter((item) => item.id !== payload.id);
+  const addedItem = cart.find((item) => (
+    (item.id === payload.id) && (JSON.stringify(item.attr) === JSON.stringify(payload.attr))
+  ));
+
+  const filteredItems = cart.filter((item) => (
+    (item.id !== payload.id)
+    || ((item.id === payload.id) && (JSON.stringify(item.attr) !== JSON.stringify(payload.attr)))
+  ));
+
   if (addedItem) {
     addedItem.qty += 1;
     return [...filteredItems, addedItem];
   }
+
   return [
     ...cart,
     {

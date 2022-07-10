@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { connect } from 'react-redux';
 
-import sendRequests from '../Utils/utils';
-import { GET_PRODUCT_QUERY } from '../Utils/queries';
 import '../assets/styles/transition.scss';
 import { addCart } from '../redux/cart/actions/cartAction';
 import { getSingleProduct } from '../redux/cart/actions/productActions';
@@ -175,15 +173,15 @@ class Details extends Component {
     this.props.addCart({ ...product, attr });
   };
 
-  // handleAttrChange = (name, value) => {
-  //   this.setState((prevState) => ({
-  //     ...prevState,
-  //     attrs: {
-  //       ...prevState.attrs,
-  //       [name]: value,
-  //     },
-  //   }));
-  // }
+  handleAttrChange = (name, value) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      attrs: {
+        ...prevState.attrs,
+        [name]: value,
+      },
+    }));
+  }
 
   render() {
     const { imgSrc, attrs } = this.state;
@@ -229,7 +227,7 @@ class Details extends Component {
                       <button
                         key={value}
                         type="button"
-                        style={{ backgroundColor: attrs[attr.name] === value ? 'red' : value }}
+                        style={{ backgroundColor: value, border: attrs[attr.name] === value && 'solid 0.09rem #5ECE7B' }}
                         className="color__btn"
                         aria-label="product color"
                         onClick={() => this.handleAttrChange(attr.name, value)}
@@ -238,7 +236,7 @@ class Details extends Component {
                       <button
                         type="button"
                         onClick={() => this.handleAttrChange(attr.name, value)}
-                        style={{ backgroundColor: attrs[attr.name] === value && 'red' }}
+                        style={{ backgroundColor: attrs[attr.name] === value && '#1D1F22', color: attrs[attr.name] === value ? '#fff' : '#1D1F22' }}
                       >
                         {value}
                       </button>
