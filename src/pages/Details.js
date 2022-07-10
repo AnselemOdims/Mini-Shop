@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import '../assets/styles/transition.scss';
 import { addCart } from '../redux/cart/actions/cartAction';
 import { getSingleProduct } from '../redux/cart/actions/productActions';
+import SuccessModal from '../components/SuccessModal';
 
 const StyledDetails = styled.section`
   padding: 9.5rem 15.21% 11.9375rem 6.72%;
@@ -160,6 +161,7 @@ class Details extends Component {
     this.state = {
       imgSrc: '',
       attrs: {},
+      showModal: false,
     };
   }
 
@@ -171,6 +173,7 @@ class Details extends Component {
   handleAddProduct = (attr) => {
     const { product } = this.props;
     this.props.addCart({ ...product, attr });
+    this.setState({ showModal: true });
   };
 
   handleAttrChange = (name, value) => {
@@ -183,8 +186,13 @@ class Details extends Component {
     }));
   }
 
+  handleShowModal = () => {
+    const { showModal } = this.state;
+    this.setState({ showModal: !showModal });
+  }
+
   render() {
-    const { imgSrc, attrs } = this.state;
+    const { imgSrc, attrs, showModal } = this.state;
     const { product } = this.props;
     return (
       <StyledDetails>
@@ -259,6 +267,7 @@ class Details extends Component {
           </div>
           <div className="desc" dangerouslySetInnerHTML={{ __html: product?.description }} />
         </div>
+        <SuccessModal show={showModal} handleShowModal={this.handleShowModal} />
       </StyledDetails>
     );
   }

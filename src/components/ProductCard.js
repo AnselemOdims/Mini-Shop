@@ -121,9 +121,11 @@ class ProductCard extends Component {
           <h3>OUT OF STOCK</h3>
         </div>
         )}
+        {product.inStock && (
         <div className="cart-img" onClick={(e) => this.handleAddProduct(e, attrs)}>
           <img src={Cart} alt="cart" />
         </div>
+        )}
       </StyledCard>
     );
   }
