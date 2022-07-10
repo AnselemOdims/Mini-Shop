@@ -8,6 +8,7 @@ import sendRequests from '../Utils/utils';
 import { GET_PRODUCT_QUERY } from '../Utils/queries';
 import '../assets/styles/transition.scss';
 import { addCart } from '../redux/cart/actions/cartAction';
+import { getSingleProduct } from '../redux/cart/actions/productActions';
 
 const StyledDetails = styled.section`
   padding: 9.5rem 15.21% 11.9375rem 6.72%;
@@ -159,7 +160,6 @@ class Details extends Component {
   constructor() {
     super();
     this.state = {
-      data: null,
       imgSrc: '',
       attrs: {},
     };
@@ -167,32 +167,33 @@ class Details extends Component {
 
   async componentDidMount() {
     const { id } = this.props.match.params;
-    const res = await sendRequests(GET_PRODUCT_QUERY(id));
-    this.setState({ data: res.data });
+    this.props.getSingleProduct(id);
+    // const res = await sendRequests(GET_PRODUCT_QUERY(id));
+    // this.setState({ data: res.data });
   }
 
-  handleAddProduct = (attr) => {
-    const { data } = this.state;
-    this.props.addCart({ ...data.product, attr });
-  };
+  // handleAddProduct = (attr) => {
+  //   const { data } = this.state;
+  //   this.props.addCart({ ...data.product, attr });
+  // };
 
-  handleAttrChange = (name, value) => {
-    this.setState((prevState) => ({
-      ...prevState,
-      attrs: {
-        ...prevState.attrs,
-        [name]: value,
-      },
-    }));
-  }
+  // handleAttrChange = (name, value) => {
+  //   this.setState((prevState) => ({
+  //     ...prevState,
+  //     attrs: {
+  //       ...prevState.attrs,
+  //       [name]: value,
+  //     },
+  //   }));
+  // }
 
   render() {
-    const { data, imgSrc, attrs } = this.state;
-
+    const { imgSrc, attrs } = this.state;
+    const { product } = this.props;
     return (
       <StyledDetails>
         <div>
-          {data && data.product.gallery.map((item) => (
+          {product?.gallery?.map((item) => (
             <img
               key={item}
               src={item}
@@ -208,16 +209,16 @@ class Details extends Component {
               timeout={1000}
               classNames="flip"
             >
-              <img src={imgSrc || data?.product?.gallery[0]} alt="product" />
+              <img src={imgSrc || product?.gallery?.[0]} alt="product" />
             </CSSTransition>
           </SwitchTransition>
         </div>
         <div>
-          <h2>{data?.product.brand}</h2>
-          <h3>{data?.product.name}</h3>
-          { data?.product.attributes.length > 0 && (
+          <h2>{product?.brand}</h2>
+          <h3>{product?.name}</h3>
+          { product?.attributes?.length > 0 && (
           <div className="attr__container">
-            {data?.product?.attributes.map(((attr) => (
+            {product?.attributes?.map(((attr) => (
               <>
                 <p>
                   {attr.name.toUpperCase()}
@@ -253,20 +254,21 @@ class Details extends Component {
           <div className="price__container">
             <p>PRICE: </p>
             <span>
-              $
-              {data?.product.prices[0].amount}
+              {product?.currencySymbol}
+              {product?.unitPrice}
             </span>
           </div>
           <div className="add__btn">
             <button type="button" onClick={() => this.handleAddProduct(attrs)}>ADD TO CART</button>
           </div>
-          <div className="desc" dangerouslySetInnerHTML={{ __html: data?.product.description }} />
+          <div className="desc" dangerouslySetInnerHTML={{ __html: product?.description }} />
         </div>
       </StyledDetails>
     );
   }
 }
 
-const ConnectedDetails = connect(null, { addCart })(Details);
+const ConnectedDetails =
+connect(({ productReducer: { product } }) => ({ product }), { addCart, getSingleProduct })(Details);
 
 export default withRouter(ConnectedDetails);

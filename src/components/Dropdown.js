@@ -113,6 +113,8 @@ class Dropdown extends Component {
         show, handleToggle, cart, cartQty,
       } = this.props;
 
+    const total = cart.reduce((a, b) => a + (b.unitPrice * b.qty), 0);
+
     return (
       <Overlay>
         <CSSTransition in={show} timeout={500} classNames="drop" unmountOnExit>
@@ -135,7 +137,10 @@ class Dropdown extends Component {
             </ul>
             <div>
               <p>Total</p>
-              <p>$200.00</p>
+              <p>
+                {cart[0]?.currencySymbol}
+                {total.toFixed(2)}
+              </p>
             </div>
             <div>
               <div onClick={handleToggle}>
