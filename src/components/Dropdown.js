@@ -128,11 +128,16 @@ class Dropdown extends Component {
                 {cartQty > 1 && 's'}
               </span>
             </div>
-            <ul>
-              { cart.map((item) => (
-                <DropdownItem key={item.id} data={item} />
-              ))}
-            </ul>
+            {cart.length > 0 ? (
+              <ul>
+                { cart.map((item) => (
+                  <DropdownItem key={item.id} data={item} />
+                ))}
+              </ul>
+            )
+              : <p>No items added to the cart yet</p>}
+            { cart.length > 0
+            && (
             <div>
               <p>Total</p>
               <p>
@@ -140,6 +145,7 @@ class Dropdown extends Component {
                 {total.toFixed(2)}
               </p>
             </div>
+            )}
             <div>
               <div onClick={handleToggle}>
                 <Link to="/cart">VIEW BAG</Link>

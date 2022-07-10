@@ -42,6 +42,17 @@ const StyledCart = styled.section`
         font-size: 14px;
         line-height: 120%;
       }
+
+      p {
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 28px;
+        color: var(--text-color-1);
+
+        span {
+          font-weight: 700;
+        }
+      }
     }
   }
 `;
@@ -49,6 +60,11 @@ const StyledCart = styled.section`
 class Cart extends Component {
   render() {
     const { cart } = this.props;
+
+    const total = cart.reduce((a, b) => a + (b.unitPrice * b.qty), 0);
+    const getQty = () => (
+      (cart.length > 0 && cart.length === 1) ? cart[0].qty : cart.reduce((a, b) => a + b.qty, 0));
+
     return (
       <StyledCart>
         <h1>CART</h1>
@@ -59,9 +75,29 @@ class Cart extends Component {
           ))}
         </div>
         <div>
-          <p>Tax 21%: $42.00</p>
-          <p>Quantity: 3</p>
-          <p>Total: $200.00</p>
+          <p>
+            Tax 21%:
+            <span>
+              {' '}
+              $
+              {(total * 0.21).toFixed(2)}
+            </span>
+          </p>
+          <p>
+            Quantity:
+            <span>
+              {' '}
+              {getQty()}
+            </span>
+          </p>
+          <p>
+            Total:
+            <span>
+              {' '}
+              $
+              {total}
+            </span>
+          </p>
           <button type="button">ORDER</button>
         </div>
       </StyledCart>
