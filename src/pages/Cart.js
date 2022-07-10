@@ -69,37 +69,43 @@ class Cart extends Component {
       <StyledCart>
         <h1>CART</h1>
         <hr />
-        <div>
-          { cart.map((item) => (
-            <CartData key={item.id} data={item} />
-          ))}
-        </div>
-        <div>
-          <p>
-            Tax 21%:
-            <span>
-              {' '}
-              $
-              {(total * 0.21).toFixed(2)}
-            </span>
-          </p>
-          <p>
-            Quantity:
-            <span>
-              {' '}
-              {getQty()}
-            </span>
-          </p>
-          <p>
-            Total:
-            <span>
-              {' '}
-              $
-              {total}
-            </span>
-          </p>
-          <button type="button">ORDER</button>
-        </div>
+        {cart.length > 0
+          ? (
+            <>
+              <div>
+                { cart.map((item) => (
+                  <CartData key={item.id} data={item} />
+                ))}
+              </div>
+              <div>
+                <p>
+                  Tax 21%:
+                  <span>
+                    {' '}
+                    $
+                    {(total * 0.21).toFixed(2)}
+                  </span>
+                </p>
+                <p>
+                  Quantity:
+                  <span>
+                    {' '}
+                    {getQty()}
+                  </span>
+                </p>
+                <p>
+                  Total:
+                  <span>
+                    {' '}
+                    $
+                    {total}
+                  </span>
+                </p>
+                <button type="button">ORDER</button>
+              </div>
+            </>
+          )
+          : <h2>No items added to the cart yet</h2>}
       </StyledCart>
     );
   }
