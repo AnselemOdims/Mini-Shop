@@ -168,14 +168,12 @@ class Details extends Component {
   async componentDidMount() {
     const { id } = this.props.match.params;
     this.props.getSingleProduct(id);
-    // const res = await sendRequests(GET_PRODUCT_QUERY(id));
-    // this.setState({ data: res.data });
   }
 
-  // handleAddProduct = (attr) => {
-  //   const { data } = this.state;
-  //   this.props.addCart({ ...data.product, attr });
-  // };
+  handleAddProduct = (attr) => {
+    const { product } = this.props;
+    this.props.addCart({ ...product, attr });
+  };
 
   // handleAttrChange = (name, value) => {
   //   this.setState((prevState) => ({
@@ -268,7 +266,7 @@ class Details extends Component {
   }
 }
 
-const ConnectedDetails =
-connect(({ productReducer: { product } }) => ({ product }), { addCart, getSingleProduct })(Details);
+const ConnectedDetails = connect(({ productReducer: { product } }) => ({ product }),
+  { addCart, getSingleProduct })(Details);
 
 export default withRouter(ConnectedDetails);

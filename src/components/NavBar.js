@@ -9,6 +9,7 @@ import Dollar from '../assets/images/dollar.svg';
 import Cart from '../assets/images/cart.svg';
 import Dropdown from './Dropdown';
 import rotate from '../assets/styles/animation';
+import CurrencySelect from './CurrencySelect';
 
 const Header = styled.header`
   position: fixed;
@@ -95,17 +96,29 @@ class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showNavBar: false,
+      showDropdown: false,
+      showCurrencyChanger: false,
     };
   }
 
-  handleToggle = () => {
-    const { showNavBar } = this.state;
-    this.setState({ showNavBar: !showNavBar });
+  handleDropdownToggle = () => {
+    const { showDropdown } = this.state;
+    this.setState({
+      showDropdown: !showDropdown,
+      showCurrencyChanger: false,
+    });
+  }
+
+  handleCurrencyToggle = () => {
+    const { showCurrencyChanger } = this.state;
+    this.setState({
+      showCurrencyChanger: !showCurrencyChanger,
+      showDropdown: false,
+    });
   }
 
   render() {
-    const { showNavBar } = this.state;
+    const { showDropdown, showCurrencyChanger } = this.state;
     const { cart } = this.props;
 
     const getQty = () => (
@@ -134,14 +147,15 @@ class NavBar extends Component {
             <img src={Logo} alt="site logo" />
           </div>
           <div>
-            <img src={Dollar} alt="site logo" />
-            <div onClick={this.handleToggle}>
+            <img src={Dollar} alt="site logo" onClick={this.handleCurrencyToggle} />
+            <div onClick={this.handleDropdownToggle}>
               <img src={Cart} alt="site logo" />
               <span>{getQty() || 0}</span>
             </div>
           </div>
         </Header>
-        <Dropdown show={showNavBar} handleToggle={this.handleToggle} cartQty={getQty()} />
+        <Dropdown show={showDropdown} handleToggle={this.handleDropdownToggle} cartQty={getQty()} />
+        <CurrencySelect handleToggle={this.handleCurrencyToggle} show={showCurrencyChanger} />
       </div>
     );
   }

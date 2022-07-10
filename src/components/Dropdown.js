@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 
 import DropdownItem from './DropdownItem';
 import '../assets/styles/transition.scss';
-import CurrencySelect from './CurrencySelect';
 
 const Overlay = styled.div`
 
@@ -21,12 +20,11 @@ const Overlay = styled.div`
       height: 100%;
       overflow: auto;
       background-color: rgba(0,0,0,0.4); 
-
     }
 
     &:nth-of-type(2) {
     width: 31%;
-    position: absolute;
+    position: fixed;
     top: 5.02rem;
     left: 64%;
     max-height: 37.5rem;
@@ -150,7 +148,6 @@ class Dropdown extends Component {
                 <button type="button">CHECKOUT</button>
               </div>
             </div>
-            <CurrencySelect />
           </div>
         </CSSTransition>
       </Overlay>

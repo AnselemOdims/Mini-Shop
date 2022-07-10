@@ -9,11 +9,11 @@ const initialState = {
 };
 
 const filterPrices = (product, payload) => {
-  const itemPrices = product.prices.filter((item) => item.currency.label === payload.label);
+  const itemPrices = product?.prices?.filter((item) => item.currency.label === payload.label);
   return {
     ...product,
-    unitPrice: itemPrices[0].amount,
-    currencySymbol: itemPrices[0].currency.symbol,
+    unitPrice: itemPrices?.[0]?.amount ?? 100,
+    currencySymbol: itemPrices?.[0]?.currency?.symbol ?? '$',
   };
 };
 
