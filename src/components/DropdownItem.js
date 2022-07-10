@@ -62,11 +62,6 @@ const StyledItem = styled.li`
             line-height: 160%;
             background: transparent;
             padding: 5px 8px;
-
-            &:active, &:focus {
-              background: var(--text-color-1);
-              color: var(--white)
-            }
           
           &.color__btn {
             width: 1rem;
@@ -74,10 +69,6 @@ const StyledItem = styled.li`
             color: var(--white);
             padding: 0;
             margin-bottom: 0.5rem;
-
-            &:focus {
-              border: solid 0.09rem var(--primary-color)
-            }
           }
 
           }

@@ -122,7 +122,7 @@ class NavBar extends Component {
     const { cart } = this.props;
 
     const getQty = () => (
-      (cart.length > 0 && cart.length === 1) ? cart[0].qty : cart.reduce((a, b) => a + b.qty, 0));
+      (cart.length > 0 && cart.length === 1) ? cart[0]?.qty : cart.reduce((a, b) => a + b?.qty, 0));
 
     return (
       <div>

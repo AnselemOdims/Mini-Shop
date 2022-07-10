@@ -111,7 +111,7 @@ class Dropdown extends Component {
         show, handleToggle, cart, cartQty,
       } = this.props;
 
-    const total = cart.reduce((a, b) => a + (b.unitPrice * b.qty), 0);
+    const total = cart.reduce((a, b) => a + (b?.unitPrice * b?.qty), 0);
 
     return (
       <Overlay>
@@ -131,7 +131,7 @@ class Dropdown extends Component {
             {cart.length > 0 ? (
               <ul>
                 { cart.map((item) => (
-                  <DropdownItem key={item.id} data={item} />
+                  <DropdownItem key={item?.id} data={item} />
                 ))}
               </ul>
             )

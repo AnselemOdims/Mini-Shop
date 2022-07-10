@@ -6,12 +6,12 @@ import { CSSTransition } from 'react-transition-group';
 const StyledModal = styled.div`
   position: absolute;
   top: 5.3rem;
-  border-radius: 5px;
+  border-radius: 1px;
   left: 32%;
   padding: 10px;
   background: #fff;
   box-shadow: 0px 10px 35px rgba(168, 172, 176, 0.19);
-  border-top: solid 0.09rem var(--primary-color);
+  border-top: solid 0.15rem var(--primary-color);
   display: flex;
   align-items: center;
   gap: 3rem;

@@ -5,6 +5,7 @@ export const QUANTITY_DECREMENTED = 'shoppingfy/cart/QUANTITY_DECREMENTED';
 export const ATTRIBUTE_CHANGED = 'shoppingfy/cart/ATTRIBUTE_CHANGED';
 export const CURRENCY_CHANGED = 'shoppingfy/cart/CURRENCY_CHANGED';
 export const UNIT_PRICE_CHANGED = 'shoppingfy/cart/UNIT_PRICE_CHANGED';
+export const REMOVE_PRODUCT = 'shoppingfy/cart/REMOVE_PRODUCT';
 
 // addCart action creator
 export const addCart = (payload) => ({
@@ -39,5 +40,10 @@ export const changeCurrency = (payload) => ({
 // unitPrice change action creator
 export const changeUnitPrice = (payload) => ({
   type: UNIT_PRICE_CHANGED,
+  payload,
+});
+
+export const removeProduct = (payload) => ({
+  type: REMOVE_PRODUCT,
   payload,
 });

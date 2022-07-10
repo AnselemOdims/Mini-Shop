@@ -16,12 +16,13 @@ const initialState = {
  * @returns - a new array of items
  */
 const calculate = (cart, payload) => (type) => cart.map((item) => {
-  if (item.id === payload && type === 'increment') {
+  const compareObj = JSON.stringify(item.attr) === JSON.stringify(payload.attr);
+  if ((item.id === payload.id && compareObj) && type === 'increment') {
     return {
       ...item,
       qty: item.qty + 1,
     };
-  } if (item.id === payload && type === 'decrement') {
+  } if ((item.id === payload.id && compareObj) && type === 'decrement') {
     return {
       ...item,
       qty: item.qty - 1,
@@ -91,6 +92,13 @@ const cartReducer = (state = initialState, { type, payload }) => {
       return { ...state, cart: calculate(state.cart, payload)('decrement') };
     case Actions.CURRENCY_CHANGED:
       return { ...handleCurrency(state, payload) };
+    case Actions.REMOVE_PRODUCT:
+      return {
+        ...state,
+        cart: state.cart.filter((item) => (
+          (item.id !== payload.id)
+          || (JSON.stringify(item.attr) !== JSON.stringify(payload.attr)))),
+      };
     default:
       return state;
   }
