@@ -74,6 +74,10 @@ const StyledCartData = styled.div`
           }
 
           }
+
+        }
+        p {
+          margin-bottom: 0.5rem;
         }
 
       }

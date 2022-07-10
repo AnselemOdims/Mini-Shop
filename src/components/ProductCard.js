@@ -63,7 +63,7 @@ class ProductCard extends Component {
   render() {
     const { product } = this.props;
     return (
-      <Link to={`/products/${product.id}`}>
+      <Link to={`/products/${product.id}`} style={{ pointerEvents: !product.inStock && 'none' }}>
         <StyledCard>
           <div>
             <img src={product.gallery[0]} alt="product" />
