@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 import CartData from '../components/CartData';
+import CheckoutModal from '../components/CheckoutModal';
 
 const StyledCart = styled.section`
   padding: 9.5rem 6.95% 11.9375rem;
@@ -58,8 +59,21 @@ const StyledCart = styled.section`
 `;
 
 class Cart extends Component {
+  constructor() {
+    super();
+    this.state = {
+      showModal: false,
+    };
+  }
+
+  handleShowModal = () => {
+    const { showModal } = this.state;
+    this.setState({ showModal: !showModal });
+  };
+
   render() {
     const { cart } = this.props;
+    const { showModal } = this.state;
 
     const total = cart.reduce((a, b) => a + (b.unitPrice * b.qty), 0);
     const getQty = () => (
@@ -101,11 +115,12 @@ class Cart extends Component {
                     {total}
                   </span>
                 </p>
-                <button type="button">ORDER</button>
+                <button type="button" onClick={this.handleShowModal}>ORDER</button>
               </div>
             </>
           )
           : <h2>No items added to the cart yet</h2>}
+        <CheckoutModal show={showModal} handleShowModal={this.handleShowModal} />
       </StyledCart>
     );
   }

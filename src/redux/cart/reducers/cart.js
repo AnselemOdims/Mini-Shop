@@ -99,6 +99,11 @@ const cartReducer = (state = initialState, { type, payload }) => {
           (item.id !== payload.id)
           || (JSON.stringify(item.attr) !== JSON.stringify(payload.attr)))),
       };
+    case Actions.RESET_STATE:
+      return {
+        ...state,
+        ...initialState,
+      };
     default:
       return state;
   }
