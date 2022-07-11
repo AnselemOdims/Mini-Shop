@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 
 const StyledModal = styled.div`
-  position: absolute;
+  position: fixed;
   top: 5.3rem;
   border-radius: 1px;
   left: 32%;

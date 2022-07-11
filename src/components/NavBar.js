@@ -101,10 +101,11 @@ class NavBar extends Component {
     };
   }
 
-  handleDropdownToggle = () => {
-    const { showDropdown } = this.state;
+  handleDropdownToggle = (e, value) => {
+    e.stopPropagation();
+    // const { showDropdown } = this.state;
     this.setState({
-      showDropdown: !showDropdown,
+      showDropdown: value,
       showCurrencyChanger: false,
     });
   }
@@ -148,7 +149,7 @@ class NavBar extends Component {
           </div>
           <div>
             <img src={Dollar} alt="site logo" onClick={this.handleCurrencyToggle} />
-            <div onClick={this.handleDropdownToggle}>
+            <div onClick={(e) => this.handleDropdownToggle(e, !showDropdown)}>
               <img src={Cart} alt="site logo" />
               <span>{getQty() || 0}</span>
             </div>

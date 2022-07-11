@@ -156,8 +156,8 @@ const StyledDetails = styled.section`
   }
 `;
 class Details extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       imgSrc: '',
       attrs: {},

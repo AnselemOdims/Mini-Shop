@@ -2,6 +2,7 @@ import { Component } from 'react';
 import styled from 'styled-components';
 
 import ProductCard from './ProductCard';
+import SuccessModal from './SuccessModal';
 
 const StyledList = styled.div`
   display: grid;
@@ -16,7 +17,20 @@ const StyledList = styled.div`
 `;
 
 class ProductList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showModal: false,
+    };
+  }
+
+  handleShowModal = () => {
+    const { showModal } = this.state;
+    this.setState({ showModal: !showModal });
+  }
+
   render() {
+    const { showModal } = this.state;
     const { data } = this.props;
     return (
       <StyledList>
@@ -24,9 +38,10 @@ class ProductList extends Component {
           <li
             key={item.name}
           >
-            <ProductCard product={item} />
+            <ProductCard product={item} handleShowModal={this.handleShowModal} />
           </li>
         ))}
+        <SuccessModal show={showModal} handleShowModal={this.handleShowModal} />
       </StyledList>
     );
   }

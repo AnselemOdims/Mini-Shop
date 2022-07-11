@@ -97,8 +97,9 @@ class ProductCard extends Component {
 
   handleAddProduct = (e, attr) => {
     e.stopPropagation();
-    const { product } = this.props;
+    const { product, handleShowModal } = this.props;
     this.props.addCart({ ...product, attr });
+    handleShowModal();
   };
 
   render() {

@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 import DropdownItem from './DropdownItem';
 import '../assets/styles/transition.scss';
+import CheckoutModal from './CheckoutModal';
 
 const Overlay = styled.div`
 
@@ -105,18 +106,32 @@ const Overlay = styled.div`
 `;
 
 class Dropdown extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showCheckoutModal: false,
+    };
+  }
+
+  handleShowModal = (e) => {
+    const { showCheckoutModal } = this.state;
+    const { handleToggle } = this.props;
+    this.setState({ showCheckoutModal: !showCheckoutModal });
+    handleToggle(e, false);
+  };
+
   render() {
     const
       {
         show, handleToggle, cart, cartQty,
       } = this.props;
-
+    const { showCheckoutModal } = this.state;
     const total = cart.reduce((a, b) => a + (b?.unitPrice * b?.qty), 0);
 
     return (
       <Overlay>
         <CSSTransition in={show} timeout={500} classNames="drop" unmountOnExit>
-          <div onClick={handleToggle} />
+          <div onClick={(e) => handleToggle(e, false)} />
         </CSSTransition>
         <CSSTransition in={show} timeout={500} classNames="drop-node" unmountOnExit>
           <div>
@@ -151,11 +166,12 @@ class Dropdown extends Component {
                 <Link to="/cart">VIEW BAG</Link>
               </div>
               <div>
-                <button type="button">CHECKOUT</button>
+                <button type="button" onClick={this.handleShowModal}>CHECKOUT</button>
               </div>
             </div>
           </div>
         </CSSTransition>
+        <CheckoutModal show={showCheckoutModal} handleShowModal={this.handleShowModal} />
       </Overlay>
     );
   }

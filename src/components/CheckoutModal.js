@@ -56,6 +56,7 @@ const StyledModal = styled.div`
         background: var(--primary-color);
         padding: 1rem;
         color: #fff;
+        font-weight: 600;
       }
     }
   }
@@ -64,8 +65,14 @@ const StyledModal = styled.div`
 `;
 
 class CheckoutModal extends Component {
+  handleClose = () => {
+    const { resetState, handleShowModal } = this.props;
+    resetState();
+    handleShowModal();
+  }
+
   render() {
-    const { show, resetState } = this.props;
+    const { show } = this.props;
 
     return ReactDOM.createPortal(
       <StyledModal>
@@ -79,7 +86,7 @@ class CheckoutModal extends Component {
             </div>
             <p>Your order has been processed</p>
             <div>
-              <Link to="/" onClick={resetState}>Ok, thanks</Link>
+              <Link to="/" onClick={this.handleClose}>Ok, thanks</Link>
             </div>
           </div>
         </CSSTransition>
