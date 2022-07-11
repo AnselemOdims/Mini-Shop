@@ -75,6 +75,7 @@ class ImageCarousel extends Component {
   render() {
     const { activeIndex } = this.state;
     const { data } = this.props;
+
     return (
       <Carousel>
         <div
@@ -87,6 +88,8 @@ class ImageCarousel extends Component {
             </div>
           ))}
         </div>
+        {(data && data.length > 1)
+        && (
         <div className="carousel__indicators">
           <button
             type="button"
@@ -101,6 +104,7 @@ class ImageCarousel extends Component {
             <img src={arrow} alt="arrow" />
           </button>
         </div>
+        )}
       </Carousel>
     );
   }

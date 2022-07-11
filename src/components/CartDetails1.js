@@ -28,7 +28,7 @@ class CartDetails1 extends Component {
                     <button
                       key={value}
                       type="button"
-                      style={{ backgroundColor: value, border: attr[item.name] === value && '0.09rem #5ECE7B' }}
+                      style={{ backgroundColor: value, border: attr[item.name] === value && '0.2rem #5ECE7B' }}
                       className="color__btn"
                       aria-label="product color"
                     />

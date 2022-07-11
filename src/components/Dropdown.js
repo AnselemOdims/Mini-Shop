@@ -28,7 +28,7 @@ const Overlay = styled.div`
     position: fixed;
     top: 5.02rem;
     left: 64%;
-    max-height: 37.5rem;
+    max-height: 60%;
     background: var(--white);
     z-index: 10;
     overflow: auto;
