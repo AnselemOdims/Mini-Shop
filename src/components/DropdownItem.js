@@ -126,7 +126,7 @@ class DropdownItem extends Component {
     return (
       <StyledItem>
         <CartDetails1 data={data} />
-        <CartDetails2 data={data} />
+        <CartDetails2 data={data} carousel={false} />
       </StyledItem>
     );
   }

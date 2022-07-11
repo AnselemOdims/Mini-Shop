@@ -2,11 +2,12 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { incrementQuantity, decrementQuantity, removeProduct } from '../redux/cart/actions/cartAction';
+import ImageCarousel from './ImageCarousel';
 
 class CartDetails2 extends Component {
   render() {
     const {
-      data, incrementQuantity, decrementQuantity, removeProduct,
+      data, incrementQuantity, decrementQuantity, removeProduct, carousel,
     } = this.props;
 
     const remove = () => {
@@ -23,9 +24,13 @@ class CartDetails2 extends Component {
           <span>{data.qty}</span>
           <button type="button" onClick={() => remove()}>-</button>
         </div>
-        <div>
-          <img src={data.gallery[0]} alt="product" />
-        </div>
+        {!carousel
+          && (
+          <div>
+            <img src={data.gallery[0]} alt="product" />
+          </div>
+          )}
+        {carousel && <ImageCarousel data={data.gallery} />}
       </div>
     );
   }

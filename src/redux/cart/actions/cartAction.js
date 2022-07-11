@@ -44,11 +44,13 @@ export const changeUnitPrice = (payload) => ({
   payload,
 });
 
+// removeProduct action creator
 export const removeProduct = (payload) => ({
   type: REMOVE_PRODUCT,
   payload,
 });
 
+// resetState action creator
 export const resetState = () => ({
   type: RESET_STATE,
 });

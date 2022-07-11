@@ -87,8 +87,8 @@ const StyledCartData = styled.div`
       &:nth-of-type(2) {
       display: flex;
       justify-content: space-between;
-      gap: 0.6rem;
-      width: 12.5rem;
+      gap: 1.5rem;
+      width: 17rem;
       height: 18rem;
 
       > div {
@@ -111,14 +111,6 @@ const StyledCartData = styled.div`
             font-size: 1.5rem
           }
         }
-
-        &:nth-of-type(2) {
-
-          img {
-            width: 12.5rem;
-            height: 100%; 
-          }
-        }
       }
     }
     }
@@ -139,7 +131,7 @@ class CartData extends Component {
       <StyledCartData>
         <div>
           <CartDetails1 data={data} />
-          <CartDetails2 data={data} />
+          <CartDetails2 data={data} carousel />
         </div>
         <hr />
       </StyledCartData>
