@@ -6,9 +6,7 @@
 <br/>
 
 # Mini Demo 
-
-![]()
-
+![scandiweb](https://user-images.githubusercontent.com/43995830/178297059-aca2a954-7bc5-4d2a-a3f8-0cf1aeb67380.gif)
 
 <br/>
 
