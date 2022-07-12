@@ -21,7 +21,6 @@ Additional description about the project and its features.
   - create-react-app tool
   - Webpack(Code Bundlng et al)
   - Babel (code transpiling)
-  - Jest(for testing)
   - Git(version control)
   - ESLint(JavaScript linting)
   - SASS
